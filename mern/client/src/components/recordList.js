@@ -27,6 +27,7 @@ export default function RecordList() {
  const [posFilter, setPosFilter] = useState("");
  const [levFilter, setLevFilter] = useState("");
  
+ 
  // This method fetches the records from the database.
  useEffect(() => {
    async function getRecords() {
@@ -49,7 +50,7 @@ export default function RecordList() {
  
  // This method will delete a record
  async function deleteRecord(id) {
-   await fetch(`http://localhost:5000/${id}`, {
+   await fetch(`http://localhost:5000/record/${id}`, {
      method: "DELETE"
    });
  
@@ -81,6 +82,8 @@ function filterLev(el){
   }else
   return el.level.toLowerCase().includes(levFilter.toLowerCase())
 }
+
+
  // This method will map out the records on the table
  function recordList() {
    return records.filter(el => filterPos(el)).filter(el => filterLev(el)).sort((a,b) => (a[sorted] > b[sorted]) ? 1 : ((b[sorted] > a[sorted]) ? -1 : 0)).map((record) => {
@@ -93,11 +96,13 @@ function filterLev(el){
      );
    });
  }
+
  
  // This following section will display the table with the records of individuals.
+ 
  return (
    <div>
-     <h3>Record List</h3>
+     <h3>Employees List</h3>
      <label>Sort by:</label>
       <select onChange={(e) => handleSort(e.target.value)} id="sort">
         <option value=""></option>
@@ -126,4 +131,5 @@ function filterLev(el){
      </table>
    </div>
  );
+ 
 }

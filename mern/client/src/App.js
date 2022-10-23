@@ -8,6 +8,9 @@ import Navbar from "./components/navbar";
 import RecordList from "./components/recordList";
 import Edit from "./components/edit";
 import Create from "./components/create";
+import CreateEquip from "./components/createEquip";
+import EquipmentList from "./components/equipmentList";
+import EditEquip from "./components/editEquip";
  
 const App = () => {
  return (
@@ -17,6 +20,11 @@ const App = () => {
        <Route exact path="/" element={<RecordList />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} />
+
+       <Route exact path="/equipment" element={<EquipmentList />} />
+       <Route path="/editEquip/:id" element={<EditEquip />} />
+       <Route path="/createEquip" element={<CreateEquip />} />
+
      </Routes>
    </div>
  );
