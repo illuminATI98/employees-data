@@ -17,7 +17,7 @@ module.exports = {
         console.log("Successfully connected to MongoDB."); 
       }
       return callback(err);
-         });
+      });
   },
  
   getDb: function () {
