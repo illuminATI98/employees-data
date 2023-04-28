@@ -63,6 +63,7 @@ recordRoutes.route("/record/update/:id").post(function (req, response) {
      middleName: req.body.middleName,
      position: req.body.position,
      level: req.body.level,
+     company: req.body.company,
    },
  };
  db_connect
