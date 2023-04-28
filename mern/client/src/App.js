@@ -11,6 +11,7 @@ import Create from "./components/create";
 import CreateEquip from "./components/createEquip";
 import EquipmentList from "./components/equipmentList";
 import EditEquip from "./components/editEquip";
+import CreateCompany from "./components/CreateCompany";
  
 const App = () => {
  return (
@@ -20,6 +21,7 @@ const App = () => {
        <Route exact path="/" element={<RecordList />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} />
+       <Route path="/createCompany" element={<CreateCompany />} />
 
        <Route exact path="/equipment" element={<EquipmentList />} />
        <Route path="/editEquip/:id" element={<EditEquip />} />
