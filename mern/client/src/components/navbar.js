@@ -31,6 +31,11 @@ export default function Navbar() {
                Add Equipment
              </NavLink>
            </li>
+           <li className="nav-item">
+             <NavLink className="nav-link" to="/createCompany">
+               Add Company
+             </NavLink>
+           </li>
          </ul>
        </div>
      </nav>
