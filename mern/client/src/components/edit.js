@@ -8,8 +8,11 @@ export default function Edit() {
    middleName: "",
    position: "",
    level: "",
+   company:"",
    records: [],
  });
+
+ const [companies,setCompanies] = useState([]);
  const params = useParams();
  const navigate = useNavigate();
  
@@ -38,6 +41,27 @@ export default function Edit() {
  
    return;
  }, [params.id, navigate]);
+
+ useEffect(() =>{
+   async function getCompany(){
+    const response = await fetch('http://localhost:5000/company');
+  
+    if (!response.ok) {
+      const message = `An error has occurred: ${response.statusText}`;
+      window.alert(message);
+      return;
+    }
+    
+    const company = await response.json();
+
+    setCompanies(company)
+   }
+
+   getCompany();
+
+   return;
+ }, [navigate]);
+
  
  // These methods will update the state properties.
  function updateForm(value) {
@@ -54,6 +78,7 @@ export default function Edit() {
      middleName: form.middleName,
      position: form.position,
      level: form.level,
+     company: form.company
    };
  
    // This will send a post request to update the data in the database.
@@ -151,7 +176,14 @@ export default function Edit() {
            <label htmlFor="positionSenior" className="form-check-label">Senior</label>
        </div>
        </div>
-       <br />
+       <div>
+        <label>Companies</label>
+        <select id="mySelect" onChange={(e) => updateForm({ company: e.target.value})}>
+          {companies.map(company =>{
+             return <option value={company.companyName}>{company.companyName}</option>
+          })}
+        </select>
+       </div>
  
        <div className="form-group">
          <input
